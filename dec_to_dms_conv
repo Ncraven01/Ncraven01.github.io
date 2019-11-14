@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+	  
+	<link rel="stylesheet" type="text/css" href="style.css">
+	  
+	<script type="text/javascript">
+
+        function solve_dms() {
+            calc_coord_dms("lat");
+            calc_coord_dms_dir("lat", "N", "S")
+            calc_coord_dms("lon");
+            calc_coord_dms_dir("lon", "E", "W")
+        }
+        
+        function calc_coord_dms(coord) {
+            var coord_dec = document.getElementById(coord+"_dec").value;
+            var coord_deg = Math.floor(coord_dec).toString();
+            var coord_min_sec = eval('(' + coord_dec + '-' + coord_deg + ')*60');
+            var coord_min = Math.floor(coord_min_sec).toString();
+            var coord_sec = eval('(' + coord_min_sec + '-' + coord_min + ')*60');
+            document.getElementById(coord+"_deg").value = coord_deg;
+            document.getElementById(coord+"_min").value = coord_min;
+            document.getElementById(coord+"_sec").value = coord_sec.toFixed(3);
+        }
+        
+        function calc_coord_dms_dir(coord, dir_1, dir_2) {
+            var coord_dir = document.getElementById(coord+"_dec_dir").value.toUpperCase();
+            if(coord_dir == dir_1 || coord_dir == dir_2){
+            document.getElementById(coord+"_dms_dir").value = coord_dir;
+            } else {
+            document.getElementById(coord+"_dms_dir").value = "";
+            }
+        }
+        
+	</script> 
+</head> 
+
+<body> 
+
+    <div class = title >Lat Long Decimal to Degree/Minute/Second Converter</div> 
+
+    <table border="1" style="width: 50%"> 
+        <colgroup>
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 25%;">
+        </colgroup>
+
+        <tr> 
+            <td>Latitude</td>
+	          <td colspan="3">Decimal</td> 
+	      </tr> 
+        <tr> 
+            <td><select name="lat_dec_dir" id="lat_dec_dir">
+                <option value="N">N</option>
+                <option value="S">S</option>
+            </select></td>
+            <td colspan="3"><input type="number" name="lat_dec" id="lat_dec" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
+        </tr>
+        <tr> 
+            <td>Longitude</td>
+	          <td colspan="3">Decimal</td> 
+	      </tr> 
+        <tr> 
+            <td><select name="lon_dec_dir" id="lon_dec_dir">
+                <option value="E">E</option>
+                <option value="W">W</option>
+            </select></td>
+            <td colspan="3"><input type="number" name="lon_dec" id="lon_dec" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
+        </tr>
+        <tr></tr>
+	      <tr> 
+        	  <td></td>
+        	  <td colspan="2"><input type="button" value="Convert" onclick="solve_dms()"/></td>
+            <td></td>
+        </tr> 
+        <tr></tr>
+        <tr> 
+            <td>Latitude</td>
+            <td>Degree</td> 
+            <td>Minute</td> 
+            <td>Second</td>
+        </tr> 
+        <tr> 
+            <td><select name="lat_dms_dir" id="lat_dms_dir">
+                <option value="N">N</option>
+                <option value="S">S</option>
+            </select></td>
+            <td><input type="number" name="lat_deg" id="lat_deg" value="0" min="0" step="1"/> </td> 
+            <td><input type="number" name="lat_min" id="lat_min" value="0" min="0" step="1"/> </td> 
+            <td><input type="number" name="lat_sec" id="lat_sec" value="0.000" min="0" step="0.001"/> </td> 
+        </tr> 
+        <tr></tr>
+	      <tr> 
+            <td>Longitude</td>
+            <td>Degree</td> 
+            <td>Minute</td> 
+            <td>Second</td> 
+        </tr> 
+        <tr> 
+            <td><select name="lon_dms_dir" id="lon_dms_dir">
+                <option value="E">E</option>
+                <option value="W">W</option>
+            </select></td>
+            <td><input type="number" name="lon_deg" id="lon_deg" value="0" min="0" step="1"/> </td> 
+            <td><input type="number" name="lon_min" id="lon_min" value="0" min="0" step="1"/> </td> 
+            <td><input type="number" name="lon_sec" id="lon_sec" value="0.000" min="0" step="0.001"/> </td> 
+        </tr>
+	</table> 
+</body> 
+
+</html>
