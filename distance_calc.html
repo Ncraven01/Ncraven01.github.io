@@ -27,11 +27,11 @@
 	    if (dist_unit = "km") {
 	        document.getElementById("distance").value = dist_km.toString()
 	    } else if (dist_unit = "mi"){
-	    	document.getElementById("distance").value = eval(dist_km+"*0.621371").toString()
+	    	document.getElementById("distance").value = (dist_km*0.621371).toString()
 	    } else if (dist_unit = "m"){
-		document.getElementById("distance").value = eval(dist_km+"*1000").toString()
+		document.getElementById("distance").value = (dist_km*1000).toString()
 	    } else if (dist_unit = "ft"){
-		document.getElementById("distance").value = eval(dist_km+"*3280.838879986877").toString()
+		document.getElementById("distance").value = (dist_km*3280.838879).toString()
 	    }
         }
                 
