@@ -49,10 +49,10 @@
         }
 
         function to_geojson() {
-	    var lat_1_dec = document.getElementById("lat_dec_1").value;
-	    var lon_1_dec = document.getElementById("lon_dec_1").value;
-	    var lat_2_dec = document.getElementById("lat_dec_2").value;
-	    var lon_2_dec = document.getElementById("lon_dec_2").value;
+	    var lat_1_dec = document.getElementById("lat_dec_1").value*1;
+	    var lon_1_dec = document.getElementById("lon_dec_1").value*1;
+	    var lat_2_dec = document.getElementById("lat_dec_2").value*1;
+	    var lon_2_dec = document.getElementById("lon_dec_2").value*1;
             var geojson = {
                 "type":"FeatureCollection",
                 "features":[{
