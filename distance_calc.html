@@ -22,7 +22,9 @@
             var earth_rad_km = 6371
             var hav_lat = solve_haversine(lat_2_rad-lat_1_rad)
             var hav_lon = solve_haversine(lon_2_rad-lon_1_rad)
-            document.getElementById("distance").value = (2*earth_rad_km*Math.asin(Math.sqrt(hav_lat+Math.cos(lat_1_rad)*Math.cos(lat_2_rad)*hav_lon))).toString()
+	    var dist_km = (2*earth_rad_km*Math.asin(Math.sqrt(hav_lat+Math.cos(lat_1_rad)*Math.cos(lat_2_rad)*hav_lon)))
+            var dist_unit = document.getElementById("dist_unit").value)
+	    document.getElementById("distance").value = dist_km.toString()
         }
                 
         function to_wkt(){
@@ -85,9 +87,9 @@
 	</tr> 
         <tr>
 	    <td>Latitude (dec)</td>
-            <td><input type="number" name="lat_dec_1" id="lat_dec_1" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
+            <td><input type="number" name="lat_dec_1" id="lat_dec_1" value="0" min="-180" max="180" step="0.00000001"/></td>
             <td>Longitude (dec)</td>
-            <td><input type="number" name="lon_dec_1" id="lon_dec_1" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
+            <td><input type="number" name="lon_dec_1" id="lon_dec_1" value="0" min="-180" max="180" step="0.00000001"/></td>
         </tr>
 	<tr></tr>
         <tr> 
@@ -95,9 +97,9 @@
 	</tr> 
         <tr>
 	    <td>Latitude (dec)</td>
-            <td><input type="number" name="lat_dec_2" id="lat_dec_2" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
+            <td><input type="number" name="lat_dec_2" id="lat_dec_2" value="0" min="-180" max="180" step="0.00000001"/></td>
             <td>Longitude (dec)</td>
-            <td><input type="number" name="lon_dec_2" id="lon_dec_2" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
+            <td><input type="number" name="lon_dec_2" id="lon_dec_2" value="0" min="-180" max="180" step="0.00000001"/></td>
         </tr>
         <tr></tr>
 	<tr> 
@@ -110,8 +112,14 @@
 	
         <tr>
 	    <td>Distance (km)</td>
-            <td colspan="3"><input type="number" name="distance" id="distance" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
-        </tr> 
+            <td colspan="2"><input type="number" name="distance" id="distance" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
+            <td><select name="dist_unit" id="dist_unit" onchange="solve_distance()">
+                <option value="km">km</option>
+		<option value="mi">mi</option>
+		<option value="m">m</option>
+     		<option value="ft">ft</option>
+            </select></td>
+	</tr> 
 	<tr> 
             <td>Well Known Text (WKT)</td>
 	    <td colspan="3"><input type="text" name="wkt_out" id="wkt_out"/></td> 
