@@ -14,66 +14,17 @@
             return Math.pow(Math.sin(angle_rad/2),2)
         }
         
-        function solve_distance(lat_1_rad, lon_1_rad, lat_2_rad, lon_2_rad){
+        function solve_distance(){
+	    var lat_1_rad = to_rad(document.getElementById("lat_dec_1").value);
+	    var lon_1_rad = to_rad(document.getElementById("lon_dec_1").value);
+	    var lat_2_rad = to_rad(document.getElementById("lat_dec_2").value);
+	    var lon_2_rad = to_rad(document.getElementById("lon_dec_2").value);
             var earth_rad_km = 6371
             var hav_lat = solve_haversine(lat_2_rad-lat_1_rad)
             var hav_lon = solve_haversine(lon_2_rad-lon_1_rad)
-            return 2*earth_rad_km*Math.asin(Math.sqrt(hav_lat+Math.cos(lat_1_rad)*Math.cos(lat_2_rad)*hav_lon))
+            document.getElementById("distance").value = (2*earth_rad_km*Math.asin(Math.sqrt(hav_lat+Math.cos(lat_1_rad)*Math.cos(lat_2_rad)*hav_lon))).toString()
         }
-
-        function solve_dec() {
-            calc_coord_dec("lat")
-            calc_coord_dec_dir("lat", "N", "S")
-            calc_coord_dec("lon")
-            calc_coord_dec_dir("lon", "E", "W")            
-            to_wkt();
-            to_geojson();   
-        }
-        
-        function calc_coord_dec(coord) {
-			var coord_deg = document.getElementById(coord+"_deg").value;
-            var coord_min = document.getElementById(coord+"_min").value;
-            var coord_sec = document.getElementById(coord+"_sec").value;
-            var coord_dec = coord_deg.toString() + '+' + coord_min.toString() + '/60+' + coord_sec.toString() + '/3600';
-            document.getElementById(coord+"_dec").value = eval(coord_dec).toFixed(8);        
-        }
-        
-        function calc_coord_dec_dir(coord, dir_1, dir_2) {
-            var coord_dir = document.getElementById(coord+"_dms_dir").value.toUpperCase();
-            if(coord_dir == dir_1 || coord_dir == dir_2){
-                document.getElementById(coord+"_dec_dir").value = coord_dir;
-            } else {
-                document.getElementById(coord+"_dec_dir").value = "";
-            }
-        }
-        
-        function solve_dms() {
-            calc_coord_dms("lat");
-            calc_coord_dms_dir("lat", "N", "S")
-            calc_coord_dms("lon");
-            calc_coord_dms_dir("lon", "E", "W")
-        }
-        
-        function calc_coord_dms(coord) {
-            var coord_dec = document.getElementById(coord+"_dec").value;
-            var coord_deg = Math.floor(coord_dec).toString();
-            var coord_min_sec = eval('(' + coord_dec + '-' + coord_deg + ')*60');
-            var coord_min = Math.floor(coord_min_sec).toString();
-            var coord_sec = eval('(' + coord_min_sec + '-' + coord_min + ')*60');
-            document.getElementById(coord+"_deg").value = coord_deg;
-            document.getElementById(coord+"_min").value = coord_min;
-            document.getElementById(coord+"_sec").value = coord_sec.toFixed(3);
-        }
-        
-        function calc_coord_dms_dir(coord, dir_1, dir_2) {
-            var coord_dir = document.getElementById(coord+"_dec_dir").value.toUpperCase();
-            if(coord_dir == dir_1 || coord_dir == dir_2){
-            document.getElementById(coord+"_dms_dir").value = coord_dir;
-            } else {
-            document.getElementById(coord+"_dms_dir").value = "";
-            }
-        }
-        
+                
         function to_wkt(){
             var lat_dec = get_dec_w_dir("lat","S");
             var lon_dec = get_dec_w_dir("lon","W");
@@ -130,68 +81,41 @@
         </colgroup>
         
         <tr> 
-            <td>Latitude</td>
-	    <td>Degree</td> 
-	    <td>Minute</td> 
-	    <td>Second</td>
+            <td colspan="4">Location 1</td>
 	</tr> 
+        <tr>
+	    <td>Latitude (dec)</td>
+            <td><input type="number" name="lat_dec_1" id="lat_dec_1" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
+            <td>Longitude (dec)</td>
+            <td><input type="number" name="lon_dec_1" id="lon_dec_1" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
+        </tr>
+	<tr></tr>
         <tr> 
-            <td><select name="lat_dms_dir" id="lat_dms_dir">
-                <option value="N">N</option>
-                <option value="S">S</option>
-            </select></td>
-            <td><input type="number" name="lat_deg" id="lat_deg" value="0" min="0" step="1"/> </td> 
-            <td><input type="number" name="lat_min" id="lat_min" value="0" min="0" step="1"/> </td> 
-            <td><input type="number" name="lat_sec" id="lat_sec" value="0.000" min="0" step="0.001"/> </td> 
-        </tr> 
-        <tr></tr>
-	<tr> 
-        	<td>Longitude</td>
-		<td>Degree</td> 
-		<td>Minute</td> 
-		<td>Second</td> 
+            <td colspan="4">Location 2</td>
 	</tr> 
-        <tr> 
-            <td><select name="lon_dms_dir" id="lon_dms_dir">
-                <option value="E">E</option>
-                <option value="W">W</option>
-            </select></td>
-            <td><input type="number" name="lon_deg" id="lon_deg" value="0" min="0" step="1"/> </td> 
-            <td><input type="number" name="lon_min" id="lon_min" value="0" min="0" step="1"/> </td> 
-            <td><input type="number" name="lon_sec" id="lon_sec" value="0.000" min="0" step="0.001"/> </td> 
+        <tr>
+	    <td>Latitude (dec)</td>
+            <td><input type="number" name="lat_dec_2" id="lat_dec_2" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
+            <td>Longitude (dec)</td>
+            <td><input type="number" name="lon_dec_2" id="lon_dec_2" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
         </tr>
         <tr></tr>
 	<tr> 
-        	<td colspan="2"><input type="button" value="DMS to Dec" onclick="solve_dec()"/></td>
-        	<td colspan="2"><input type="button" value="Dec to DMS" onclick="solve_dms()"/></td>
+        	<td></td>
+        	<td colspan="2"><input type="button" value="Calculate" onclick="solve_distance()"/></td>
+		<td></td>
         </tr> 
         <tr></tr>
-        <tr> 
-            <td>Latitude</td>
-	    <td colspan="3">Decimal</td> 
-	</tr> 
-        <tr> 
-            <td><select name="lat_dec_dir" id="lat_dec_dir">
-                <option value="N">N</option>
-                <option value="S">S</option>
-            </select></td>
-            <td colspan="3"><input type="number" name="lat_dec" id="lat_dec" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
-        </tr>
-        <tr> 
-            <td>Longitude</td>
-	    <td colspan="3">Decimal</td> 
-	</tr> 
-        <tr> 
-            <td><select name="lon_dec_dir" id="lon_dec_dir">
-                <option value="E">E</option>
-                <option value="W">W</option>
-            </select></td>
-            <td colspan="3"><input type="number" name="lon_dec" id="lon_dec" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
-        </tr>
-        <tr> 
+	    
+	
+        <tr>
+	    <td>Distance (km)</td>
+            <td colspan="3"><input type="number" name="distance" id="distance" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
+        </tr> 
+	<tr> 
             <td>Well Known Text (WKT)</td>
 	    <td colspan="3"><input type="text" name="wkt_out" id="wkt_out"/></td> 
-		</tr> 
+	</tr> 
         <tr> 
             <td>GeoJSON</td>
 	    <td colspan="3"><input type="text" name="geojson_out" id="geojson_out"/></td> 
