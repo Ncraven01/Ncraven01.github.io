@@ -23,7 +23,8 @@
             var hav_lat = solve_haversine(lat_2_rad-lat_1_rad)
             var hav_lon = solve_haversine(lon_2_rad-lon_1_rad)
 	    var dist_km = (2*earth_rad_km*Math.asin(Math.sqrt(hav_lat+Math.cos(lat_1_rad)*Math.cos(lat_2_rad)*hav_lon)))
-            var dist_unit = document.getElementById("dist_unit").value
+            var dist_ele = document.getElementById("dist_unit")
+	    var dist_unit = dist_ele.options[dist_ele.selectedIndex].value
 	    if (dist_unit == "km") {
 	        document.getElementById("distance").value = dist_km.toString()
 	    } else if (dist_unit == "mi"){
