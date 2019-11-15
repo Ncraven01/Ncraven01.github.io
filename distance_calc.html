@@ -34,32 +34,39 @@
 	    } else if (dist_unit == "ft"){
 		document.getElementById("distance").value = (dist_km*3280.838879).toString()
 	    }
+		
+	    to_geojson();
+	    to_wkt();
         }
                 
         function to_wkt(){
-            var lat_dec = get_dec_w_dir("lat","S");
-            var lon_dec = get_dec_w_dir("lon","W");
-            
-            document.getElementById("wkt_out").value = "POINT(" + lon_dec +" "+ lat_dec +")";
+	    var lat_1_dec = document.getElementById("lat_dec_1").value;
+	    var lon_1_dec = document.getElementById("lon_dec_1").value;
+	    var lat_2_dec = document.getElementById("lat_dec_2").value;
+	    var lon_2_dec = document.getElementById("lon_dec_2").value;
+		
+            document.getElementById("wkt_out").value = "LINESTRING(" + lon_1_dec +" "+ lat_1_dec +", "+ lon_2_dec +" "+ lat_2_dec+")";
         }
 
         function to_geojson() {
+	    var lat_1_dec = document.getElementById("lat_dec_1").value;
+	    var lon_1_dec = document.getElementById("lon_dec_1").value;
+	    var lat_2_dec = document.getElementById("lat_dec_2").value;
+	    var lon_2_dec = document.getElementById("lon_dec_2").value;
             var geojson = {
                 "type":"FeatureCollection",
                 "features":[{
                 "type":"Feature",
                 "geometry":{
-                "type":"Point",
+                "type":"LINESTRING",
                 "coordinates":[]
                 },
                 "properties":null
                 }]
             };
-
-            var lat_dec = get_dec_w_dir("lat","S");
-            var lon_dec = get_dec_w_dir("lon","W");
             
-            geojson.features[0].geometry.coordinates = [lon_dec, lat_dec];
+            geojson.features[0].geometry.coordinates.push([lon_1_dec, lat_1_dec]);
+       	    geojson.features[0].geometry.coordinates.push([lon_2_dec, lat_2_dec]);
         
             document.getElementById("geojson_out").value = JSON.stringify(geojson);
         }
