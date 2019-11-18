@@ -7,27 +7,20 @@
 	<script type="text/javascript">
 
         function solve_dec() {
-            calc_coord_dec("lat")
-            calc_coord_dec_dir("lat", "N", "S")
-            calc_coord_dec("lon")
-            calc_coord_dec_dir("lon", "E", "W")               
-        }
+            calc_coord_dec("lat", "N")
+            calc_coord_dec("lon", "E")
+	}
         
-        function calc_coord_dec(coord) {
-			      var coord_deg = document.getElementById(coord+"_deg").value;
+        function calc_coord_dec(coord, pos_dir) {
+	    var coord_deg = document.getElementById(coord+"_deg").value;
             var coord_min = document.getElementById(coord+"_min").value;
             var coord_sec = document.getElementById(coord+"_sec").value;
+	    var coord_dir = document.getElementById(coord+"_dms_dir").value.toUpperCase();
             var coord_dec = coord_deg.toString() + '+' + coord_min.toString() + '/60+' + coord_sec.toString() + '/3600';
-            document.getElementById(coord+"_dec").value = eval(coord_dec).toFixed(8);        
-        }
-        
-        function calc_coord_dec_dir(coord, dir_1, dir_2) {
-            var coord_dir = document.getElementById(coord+"_dms_dir").value.toUpperCase();
-            if(coord_dir == dir_1 || coord_dir == dir_2){
-                document.getElementById(coord+"_dec_dir").value = coord_dir;
-            } else {
-                document.getElementById(coord+"_dec_dir").value = "";
-            }
+            if (coord_dir != pos_dir){
+	        coord_dec += '*(-1)'
+	    }
+	    document.getElementById(coord+"_dec").value = eval(coord_dec).toFixed(8);        
         }
        
 	</script> 
@@ -39,77 +32,51 @@
 
     <table border="1" style="width: 50%"> 
 	<colgroup>
-            <col span="1" style="width: 12.5%;">
-            <col span="1" style="width: 12.5%;">
-            <col span="1" style="width: 12.5%;">
-            <col span="1" style="width: 12.5%;">
-            <col span="1" style="width: 12.5%;">
-            <col span="1" style="width: 12.5%;">
-            <col span="1" style="width: 12.5%;">
-            <col span="1" style="width: 12.5%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 25%;">
         </colgroup>
         
-        <tr> 
-            <td colspan="2">Latitude</td>
-	    <td colspan="2">Degree</td> 
-	    <td colspan="2">Minute</td> 
-	    <td colspan="2">Second</td>
-	</tr> 
-        <tr> 
-            <td colspan="2"><select name="lat_dms_dir" id="lat_dms_dir">
+        <tr>
+	    <td colspan="1">Latitude</td>
+            <td colspan="1"><select name="lat_dms_dir" id="lat_dms_dir">
                 <option value="N">N</option>
                 <option value="S">S</option>
             </select></td>
-            <td colspan="6">
+            <td colspan="2">
 		<input type="number" width="33%" name="lat_deg" id="lat_deg" value="0" min="0" step="1"/>&#8728</>
 		<input type="number" width="33%" name="lat_min" id="lat_min" value="0" min="0" step="1"/>&#8242</>
-		<input type="number"  width="34%"name="lat_sec" id="lat_sec" value="0.000" min="0" step="0.001"/>&#8243</>
+		<input type="number" width="34%" name="lat_sec" id="lat_sec" value="0.000" min="0" step="0.001"/>&#8243</>
 	    </td>
         </tr> 
         <tr></tr>
-	<tr> 
-        	<td colspan="2">Longitude</td>
-		<td colspan="2">Degree</td> 
-		<td colspan="2">Minute</td> 
-		<td colspan="2">Second</td> 
-	</tr> 
-        <tr> 
-            <td colspan="2"><select name="lon_dms_dir" id="lon_dms_dir">
+        <tr>
+	    <td colspan="1">Longitude</td>
+            <td colspan="1"><select name="lon_dms_dir" id="lon_dms_dir">
                 <option value="E">E</option>
                 <option value="W">W</option>
             </select></td>
-            <td colspan="2"><input type="number" name="lon_deg" id="lon_deg" value="0" min="0" step="1"/>&#8728</td> 
-            <td colspan="2"><input type="number" name="lon_min" id="lon_min" value="0" min="0" step="1"/>&#8242</td> 
-            <td colspan="2"><input type="number" name="lon_sec" id="lon_sec" value="0.000" min="0" step="0.001"/>&#8243</td> 
+            <td colspan="2">
+		<input type="number" width="33%" name="lon_deg" id="lon_deg" value="0" min="0" step="1"/>&#8728</> 
+                <input type="number" width="33%" name="lon_min" id="lon_min" value="0" min="0" step="1"/>&#8242</> 
+                <input type="number" width="34%" name="lon_sec" id="lon_sec" value="0.000" min="0" step="0.001"/>&#8243</>
+	    </td>
         </tr>
         <tr></tr>
-	      <tr> 
-        	  <td colspan="2"></td>
-            <td colspan="4"><input type="button" value="Convert" onclick="solve_dec()"/></td>
-            <td colspan="2"></td>
+	<tr> 
+            <td colspan="1"></td>
+            <td colspan="2"><input type="button" value="Convert" onclick="solve_dec()"/></td>
+            <td colspan="1"></td>
         </tr> 
         <tr></tr>
         <tr> 
-            <td colspan="2">Latitude</td>
-	    <td colspan="6">Decimal</td> 
-	</tr> 
-        <tr> 
-            <td colspan="2"><select name="lat_dec_dir" id="lat_dec_dir">
-                <option value="N">N</option>
-                <option value="S">S</option>
-            </select></td>
-            <td colspan="6"><input type="number" name="lat_dec" id="lat_dec" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
+            <td colspan="1">Latitude</td>
+            <td colspan="3"><input type="number" name="lat_dec" id="lat_dec" value="0.00000000" min="-180.00000000" max="180.00000000" step="0.00000001"/></td>
         </tr>
         <tr> 
-            <td colspan="2">Longitude</td>
-	          <td colspan="6">Decimal</td> 
-	      </tr> 
-        <tr> 
-            <td colspan="2"><select name="lon_dec_dir" id="lon_dec_dir">
-                <option value="E">E</option>
-                <option value="W">W</option>
-            </select></td>
-            <td colspan="6"><input type="number" name="lon_dec" id="lon_dec" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
+            <td colspan="1">Longitude</td>
+            <td colspan="3"><input type="number" name="lon_dec" id="lon_dec" value="0.00000000" min="-180.00000000" max="180.00000000" step="0.00000001"/></td>
         </tr>
 	</table> 
 </body> 
