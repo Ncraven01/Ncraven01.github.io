@@ -28,9 +28,10 @@
 <!-- create table -->
 <body> 
 
-    <div class = title >Lat Long Converter</div> 
+    <div class = title >Latitude Longitude DMS to Dec Converter</div> 
 
-    <table border="1" style="width: 50%"> 
+    <p>This tool will convert a latitude and longitude from degree (</>&#8728
+    <table border="0" style="width: 25%"> 
 	<colgroup>
             <col span="1" style="width: 25%;">
             <col span="1" style="width: 25%;">
@@ -39,9 +40,9 @@
         </colgroup>
         
         <tr>
-	    <td colspan="1">Latitude</td>
+	    <td colspan="1">Latitude:</td>
             <td colspan="3">
-		<select name="lat_dms_dir" id="lat_dms_dir">
+		<select style="width:10%" name="lat_dms_dir" id="lat_dms_dir">
                     <option value="N">N</option>
                     <option value="S">S</option>
                 </select>
@@ -52,9 +53,9 @@
         </tr> 
         <tr></tr>
         <tr>
-	    <td colspan="1">Longitude</td>
+	    <td colspan="1">Longitude:</td>
             <td colspan="3">
-		<select name="lon_dms_dir" id="lon_dms_dir">
+		<select style="width:10%" name="lon_dms_dir" id="lon_dms_dir">
                     <option value="E">E</option>
                     <option value="W">W</option>
                 </select>
@@ -71,11 +72,11 @@
         </tr> 
         <tr></tr>
         <tr> 
-            <td colspan="1">Latitude</td>
+            <td colspan="1">Latitude:</td>
             <td colspan="3"><input type="number" name="lat_dec" id="lat_dec" value="0.00000000" min="-180.00000000" max="180.00000000" step="0.00000001"/></td>
         </tr>
         <tr> 
-            <td colspan="1">Longitude</td>
+            <td colspan="1">Longitude:</td>
             <td colspan="3"><input type="number" name="lon_dec" id="lon_dec" value="0.00000000" min="-180.00000000" max="180.00000000" step="0.00000001"/></td>
         </tr>
 	</table> 
