@@ -1,40 +1,42 @@
 title{ 
-margin-bottom: 10px; 
+margin-bottom:10px; 
 text-align:center; 
-width: 50%; 
+width:50%;
 color:green; 
-border: solid black 2px; 
+border-style:solid;
+border-color:black;
+border-width:2px; 
 } 
 
 table.calc_table{
-border:1px green solid;
+border-style:solid;
+border-color:green;
+border-width:1px;
 text-align:center;
 }
 
 input[type="button"] { 
 background-color:green; 
-color: black;  
+color:black;  
 width:100%;
 } 
 
 input[type="text"] { 
 background-color:white;
 text-align:center;
-/*width:100%;*/
 border-width:1px;
-border:none;
 } 
 
 input[type="number"] { 
 background-color:white;
 text-align:right;
-border-style: solid;
-border-color: black;
-border-width: 1px;
+border-style:solid;
+border-color:black;
+border-width:1px;
 } 
 
 th, td {
-padding: 5px;
+padding:5px;
 border-width:0px;
 text-align:center;
 vertical-align:center;
