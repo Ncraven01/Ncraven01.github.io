@@ -20,7 +20,7 @@
             if (coord_dir != pos_dir){
 	        coord_dec = '(-1)*(' + coord_dec + ')'
 	    }
-	    document.getElementById(coord+"_dec").value = eval(coord_dec).toFixed(8);        
+	    document.getElementById(coord+"_dec").innerHTML = eval(coord_dec).toFixed(8);        
         }
        
 	</script> 
@@ -29,31 +29,33 @@
 <body> 
 
     <div class = title >Latitude Longitude DMS to Dec Converter</div> 
-
-    <p style="line-height:0.5;">This tool will convert a latitude and longitude from degree (&#176;) minute (&#8242;)</p>
-    <p style="line-height:0.5;"> seconds (&#8243;) to degree decimal.</p>
     
-    <table style="width:40%; border:3px red solid;"> 
+    <table class="calc_table" style="width:40%;"> 
 	<colgroup>
             <col span="1" style="width:25%;">
             <col span="1" style="width:25%;">
             <col span="1" style="width:25%;">
             <col span="1" style="width:25%;">
         </colgroup>
-        
         <tr>
-	    <td align="center" colspan="2">Latitude:</td>
-	    <td align="center" colspan="2">Longitude:</td>
+	    <p>
+	        This tool will convert a latitude and longitude from Degree, Minutes Seconds (DMS, 
+		    in DD&#176; MM&#8242; SS.S&#8243; format) to Decimal degrees (DD, in DD.DDD&#176; format)
+	    </p>
+        </tr>
+	<tr>
+	    <td colspan="2">Latitude:</td>
+	    <td colspan="2">Longitude:</td>
 	</tr>
 	<tr>
-            <td align="center" colspan="2">
+            <td colspan="2">
 		<select style="width:15%;" name="lat_dms_dir" id="lat_dms_dir">
                     <option value="N">N</option>
                     <option value="S">S</option>
                 </select>
-		<input type="number" style="width:20%; border:1px black solid;" name="lat_deg" id="lat_deg" value="0" min="0" step="1"/>&#176;</>
-		<input type="number" style="width:20%; border:1px black solid;" name="lat_min" id="lat_min" value="0" min="0" step="1"/>&#8242;</>
-		<input type="number" style="width:25%; border:1px black solid;" name="lat_sec" id="lat_sec" value="0.000" min="0" step="0.001"/>&#8243;</>
+		<input type="number" style="width:20%;" name="lat_deg" id="lat_deg" value="0" min="0" step="1"/>&#176;</>
+		<input type="number" style="width:20%;" name="lat_min" id="lat_min" value="0" min="0" step="1"/>&#8242;</>
+		<input type="number" style="width:25%;" name="lat_sec" id="lat_sec" value="0.000" min="0" step="0.001"/>&#8243;</>
 	    </td>
 	    
             <td align="center" colspan="2">
@@ -61,9 +63,9 @@
                     <option value="E">E</option>
                     <option value="W">W</option>
                 </select>
-		<input type="number" style="width:20%; border:1px black solid;" name="lon_deg" id="lon_deg" value="0" min="0" step="1"/>&#176;</>
-		<input type="number" style="width:20%; border:1px black solid;" name="lon_min" id="lon_min" value="0" min="0" step="1"/>&#8242;</>
-	        <input type="number" style="width:25%; border:1px black solid;" name="lon_sec" id="lon_sec" value="0.000" min="0" step="0.001"/>&#8243;</>
+		<input type="number" style="width:20%;" name="lon_deg" id="lon_deg" value="0" min="0" step="1"/>&#176;</>
+		<input type="number" style="width:20%;" name="lon_min" id="lon_min" value="0" min="0" step="1"/>&#8242;</>
+	        <input type="number" style="width:25%;" name="lon_sec" id="lon_sec" value="0.000" min="0" step="0.001"/>&#8243;</>
 	    </td>
         </tr> 
         <tr></tr>
@@ -74,15 +76,15 @@
         </tr> 
         <tr></tr>
         <tr> 
-            <td align="center" colspan="2">Latitude:</td>
-	    <td align="center" colspan="2">Longitude:</td>
+            <td colspan="2">Latitude:</td>
+	    <td colspan="2">Longitude:</td>
         </tr>
         <tr> 
-	    <td align="center" colspan="2">
-	        <input type="number" style="width:70%; border:1px black solid;" name="lat_dec" id="lat_dec" value="0.00000000" min="-180.00000000" max="180.00000000" step="0.00000001"/>
+	    <td colspan="2">
+	        <p style="width:70%;" name="lat_dec" id="lat_dec">0.00000000</>
 	    </td>
-            <td align="center" colspan="2">
-	        <input type="number" style="width:70%; border:1px black solid;" name="lon_dec" id="lon_dec" value="0.00000000" min="-180.00000000" max="180.00000000" step="0.00000001"/>
+            <td colspan="2">
+	        <p style="width:70%;" name="lon_dec" id="lon_dec">0.00000000</>
 	    </td>
 	</tr>
 	</table> 
