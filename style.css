@@ -6,7 +6,7 @@ color:green;
 border: solid black 2px; 
 } 
 
-calc_table{
+table.calc_table{
 border:1px green solid;
 text-align:center;
 }
