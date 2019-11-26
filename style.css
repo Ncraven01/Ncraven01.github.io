@@ -28,7 +28,9 @@ border:none;
 input[type="number"] { 
 background-color:white;
 text-align:right;
-border:1px black solid;
+border-style: solid;
+border-color: black;
+border-width: 1px;
 } 
 
 th, td {
