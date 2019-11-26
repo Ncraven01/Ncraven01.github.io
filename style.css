@@ -7,8 +7,8 @@ border: solid black 2px;
 } 
 
 calc_table{
-  border:1px grey solid;
-  text-align:center;
+border:1px green solid;
+text-align:center;
 }
 
 input[type="button"] { 
@@ -20,7 +20,7 @@ width:100%;
 input[type="text"] { 
 background-color:white;
 text-align:center;
-/*width:100%*/;
+/*width:100%;*/
 border-width:1px;
 border:none;
 } 
