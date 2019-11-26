@@ -6,6 +6,11 @@ color:green;
 border: solid black 2px; 
 } 
 
+calc_table{
+  border:1px grey solid;
+  text-align:center;
+}
+
 input[type="button"] { 
 background-color:green; 
 color: black;  
@@ -24,12 +29,15 @@ input[type="number"] {
 background-color:white;
 text-align:right;
 /*width:100%*/;
-border-width:1px;
+/*border-width:1px;*/
+border:1px black solid;
 border:none;
 } 
 
 th, td {
 padding: 5px;
 border-width:0px;
+text-align:center;
+vertical-align:center;
 /*border: solid black 2px;*/
 }
