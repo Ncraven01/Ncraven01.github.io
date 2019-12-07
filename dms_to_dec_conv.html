@@ -45,7 +45,7 @@
                 "properties":null
                 };
             
-            geojson.features[0].geometry.coordinates.push([lon_1_dec, lat_1_dec]);
+            geojson.geometry.coordinates.push([lon_1_dec, lat_1_dec]);
         
             document.getElementById("geojson").value = JSON.stringify(geojson);
         }
@@ -112,11 +112,11 @@
 	</tr>
 	<tr>
 	    <td colspan="1">As WKT:</td> 
-	    <td colspan="3" name="wkt" id="wkt">POINT(0.00000000 0.00000000)</td>
+	    <td colspan="3" name="wkt_out" id="wkt_out">POINT(0.00000001 0.00000000)</td>
 	</tr>
 	<tr>
 	    <td colspan="1">As GeoJson:</td> 
-	    <td colspan="3" name="geojson" id="geojson">POINT(0.00000000 0.00000000)</td>
+	    <td colspan="3" name="geojson_out" id="geojson_out">POINT(0.00000000 0.00000000)</td>
 	</tr>
 	</table> 
 </body> 
