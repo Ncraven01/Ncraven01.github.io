@@ -30,7 +30,7 @@
 	    var lat_1_dec = document.getElementById("lat_dec").value;
 	    var lon_1_dec = document.getElementById("lon_dec").value;
 		
-            document.getElementById("wkt_out").value = "POINT(" + lon_1_dec +" "+ lat_1_dec +")";
+            document.getElementById("wkt_out").value = 'POINT(' + lon_1_dec +' '+ lat_1_dec +')';
         }
 		
         function to_geojson() {
@@ -112,7 +112,7 @@
 	</tr>
 	<tr>
 	    <td colspan="1">As WKT:</td> 
-	    <td colspan="3" name="wkt_out" id="wkt_out">POINT(0.00000001 0.00000000)</td>
+	    <td colspan="3" name="wkt_out" id="wkt_out">POINT(0.00000002 0.00000000)</td>
 	</tr>
 	<tr>
 	    <td colspan="1">As GeoJson:</td> 
