@@ -34,43 +34,9 @@
 	    } else if (dist_unit == "ft"){
 		document.getElementById("distance").value = (dist_km*3280.838879).toString()
 	    }
-		
-	    to_geojson();
-	    to_wkt();
+	
         }
                 
-        function to_wkt(){
-	    var lat_1_dec = document.getElementById("lat_dec_1").value;
-	    var lon_1_dec = document.getElementById("lon_dec_1").value;
-	    var lat_2_dec = document.getElementById("lat_dec_2").value;
-	    var lon_2_dec = document.getElementById("lon_dec_2").value;
-		
-            document.getElementById("wkt_out").value = "LINESTRING(" + lon_1_dec +" "+ lat_1_dec +", "+ lon_2_dec +" "+ lat_2_dec+")";
-        }
-
-        function to_geojson() {
-	    var lat_1_dec = document.getElementById("lat_dec_1").value*1;
-	    var lon_1_dec = document.getElementById("lon_dec_1").value*1;
-	    var lat_2_dec = document.getElementById("lat_dec_2").value*1;
-	    var lon_2_dec = document.getElementById("lon_dec_2").value*1;
-            var geojson = {
-                "type":"FeatureCollection",
-                "features":[{
-                "type":"Feature",
-                "geometry":{
-                "type":"LineString",
-                "coordinates":[]
-                },
-                "properties":null
-                }]
-            };
-            
-            geojson.features[0].geometry.coordinates.push([lon_1_dec, lat_1_dec]);
-       	    geojson.features[0].geometry.coordinates.push([lon_2_dec, lat_2_dec]);
-        
-            document.getElementById("geojson_out").value = JSON.stringify(geojson);
-        }
-       
 	</script> 
 </head> 
 <!-- create table -->
@@ -123,14 +89,6 @@
 		<option value="m">m</option>
      		<option value="ft">ft</option>
             </select></td>
-	</tr> 
-	<tr> 
-            <td>Well Known Text (WKT)</td>
-	    <td colspan="3"><input type="text" name="wkt_out" id="wkt_out"/></td> 
-	</tr> 
-        <tr> 
-            <td>GeoJSON</td>
-	    <td colspan="3"><input type="text" name="geojson_out" id="geojson_out"/></td> 
 	</tr> 
 	</table> 
 </body> 
