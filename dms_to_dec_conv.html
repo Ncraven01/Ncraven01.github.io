@@ -26,11 +26,28 @@
 	    document.getElementById(coord+"_dec").innerHTML = eval(coord_dec).toFixed(8);        
         }
 		
-	function to_wkt(){
+	function to_wkt() {
 	    var lat_1_dec = document.getElementById("lat_dec").value;
 	    var lon_1_dec = document.getElementById("lon_dec").value;
 		
-            document.getElementById("wkt_out").value = 'POINT(' + lon_1_dec +' '+ lat_1_dec +')';
+            document.getElementById("wkt_out").innerHTML = 'POINT(' + lon_1_dec +' '+ lat_1_dec +')';
+        }
+		
+	function to_geojson() {
+	    var lat_1_dec = document.getElementById("lat_dec").value*1;
+	    var lon_1_dec = document.getElementById("lon_dec").value*1;
+            var geojson = {
+                "type":"Feature",
+                "geometry":{
+                    "type":"Point",
+                    "coordinates":[]
+                    },
+                "properties":null
+                };
+            
+            geojson.geometry.coordinates.push([lon_1_dec, lat_1_dec]);
+        
+            document.getElementById("geojson_out").innerHTML = JSON.stringify(geojson);
         }
 		       
 	</script> 
@@ -95,7 +112,7 @@
 	</tr>
 	<tr>
 	    <td colspan="1">As WKT:</td> 
-	    <td colspan="3" name="wkt_out" id="wkt_out">POINT(0.00000002 0.00000000)</td>
+	    <td colspan="3" name="wkt_out" id="wkt_out">POINT(0.00000004 0.00000000)</td>
 	</tr>
 	<tr>
 	    <td colspan="1">As GeoJson:</td> 
