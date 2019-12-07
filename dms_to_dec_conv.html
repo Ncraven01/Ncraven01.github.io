@@ -32,24 +32,7 @@
 		
             document.getElementById("wkt_out").value = 'POINT(' + lon_1_dec +' '+ lat_1_dec +')';
         }
-		
-        function to_geojson() {
-	    var lat_1_dec = document.getElementById("lat_dec").value*1;
-	    var lon_1_dec = document.getElementById("lon_dec").value*1;
-            var geojson = {
-                "type":"Feature",
-                "geometry":{
-                "type":"Point",
-                "coordinates":[]
-                },
-                "properties":null
-                };
-            
-            geojson.geometry.coordinates.push([lon_1_dec, lat_1_dec]);
-        
-            document.getElementById("geojson_out").value = JSON.stringify(geojson);
-        }
-       
+		       
 	</script> 
 </head> 
 <!-- create table -->
