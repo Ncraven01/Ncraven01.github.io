@@ -30,7 +30,7 @@
 	    var lat_1_dec = document.getElementById("lat_dec").value;
 	    var lon_1_dec = document.getElementById("lon_dec").value;
 		
-            document.getElementById("wkt_out").value = "POINT(" + lon_1_dec +" "+ lat_1_dec +")";
+            document.getElementById("wkt").value = "POINT(" + lon_1_dec +" "+ lat_1_dec +")";
         }
 		
         function to_geojson() {
@@ -47,7 +47,7 @@
             
             geojson.features[0].geometry.coordinates.push([lon_1_dec, lat_1_dec]);
         
-            document.getElementById("geojson_out").value = JSON.stringify(geojson);
+            document.getElementById("geojson").value = JSON.stringify(geojson);
         }
        
 	</script> 
