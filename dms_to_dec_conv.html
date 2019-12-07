@@ -11,6 +11,7 @@
             calc_coord_dec("lon", "E")
 		
 	    to_wkt()
+	    to_geojson()
 	}
         
         function calc_coord_dec(coord, pos_dir) {
@@ -22,7 +23,7 @@
             if (coord_dir != pos_dir){
 	        coord_dec = '(-1)*(' + coord_dec + ')'
 	    }
-	    document.getElementById(coord+"_dec").innerHTML = eval(coord_dec).toFixed(8) + ' &#176;';        
+	    document.getElementById(coord+"_dec").innerHTML = eval(coord_dec).toFixed(8);        
         }
 		
 	function to_wkt(){
@@ -31,6 +32,7 @@
 		
             document.getElementById("wkt_out").value = "POINT(" + lon_1_dec +" "+ lat_1_dec +")";
         }
+		
         function to_geojson() {
 	    var lat_1_dec = document.getElementById("lat_dec").value*1;
 	    var lon_1_dec = document.getElementById("lon_dec").value*1;
@@ -105,8 +107,8 @@
 	    <td colspan="2">Longitude:</td>
         </tr>
         <tr> 
-	    <td colspan="2" name="lat_dec" id="lat_dec">0.00000000 &#176;</>
-            <td colspan="2" name="lon_dec" id="lon_dec">0.00000000 &#176;</>
+	    <td colspan="2" name="lat_dec" id="lat_dec">0.00000000</>
+            <td colspan="2" name="lon_dec" id="lon_dec">0.00000000</>
 	</tr>
 	<tr>
 	    <td colspan="1">As WKT:</td> 
