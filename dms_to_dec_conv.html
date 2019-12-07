@@ -9,6 +9,8 @@
         function solve_dec() {
             calc_coord_dec("lat", "N")
             calc_coord_dec("lon", "E")
+		
+	    to_wkt()
 	}
         
         function calc_coord_dec(coord, pos_dir) {
@@ -21,6 +23,29 @@
 	        coord_dec = '(-1)*(' + coord_dec + ')'
 	    }
 	    document.getElementById(coord+"_dec").innerHTML = eval(coord_dec).toFixed(8) + ' &#176;';        
+        }
+		
+	function to_wkt(){
+	    var lat_1_dec = document.getElementById("lat_dec").value;
+	    var lon_1_dec = document.getElementById("lon_dec").value;
+		
+            document.getElementById("wkt_out").value = "POINT(" + lon_1_dec +" "+ lat_1_dec +")";
+        }
+        function to_geojson() {
+	    var lat_1_dec = document.getElementById("lat_dec").value*1;
+	    var lon_1_dec = document.getElementById("lon_dec").value*1;
+            var geojson = {
+                "type":"Feature",
+                "geometry":{
+                "type":"Point",
+                "coordinates":[]
+                },
+                "properties":null
+                };
+            
+            geojson.features[0].geometry.coordinates.push([lon_1_dec, lat_1_dec]);
+        
+            document.getElementById("geojson_out").value = JSON.stringify(geojson);
         }
        
 	</script> 
@@ -82,6 +107,14 @@
         <tr> 
 	    <td colspan="2" name="lat_dec" id="lat_dec">0.00000000 &#176;</>
             <td colspan="2" name="lon_dec" id="lon_dec">0.00000000 &#176;</>
+	</tr>
+	<tr>
+	    <td colspan="1">As WKT:</td> 
+	    <td colspan="3" name="wkt" id="wkt">POINT(0.00000000 0.00000000)</td>
+	</tr>
+	<tr>
+	    <td colspan="1">As GeoJson:</td> 
+	    <td colspan="3" name="geojson" id="geojson">POINT(0.00000000 0.00000000)</td>
 	</tr>
 	</table> 
 </body> 
