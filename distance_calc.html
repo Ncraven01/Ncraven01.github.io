@@ -42,9 +42,9 @@
 <!-- create table -->
 <body> 
 
-    <div class = title >Lat Long Converter</div> 
+    <div class = title style="width:40%;">Lat Long Converter</div> 
 
-    <table border="1" style="width: 50%"> 
+    <table border="1" style="width:50%;"> 
         <colgroup>
             <col span="1" style="width: 25%;">
             <col span="1" style="width: 25%;">
@@ -52,34 +52,34 @@
             <col span="1" style="width: 25%;">
         </colgroup>
         
-        <tr> 
-            <td colspan="4">Location 1</td>
-	</tr> 
-        <tr>
-	    <td>Latitude (dec)</td>
-            <td><input type="number" name="lat_dec_1" id="lat_dec_1" value="0" min="-180" max="180" step="0.00000001"/></td>
-            <td>Longitude (dec)</td>
-            <td><input type="number" name="lon_dec_1" id="lon_dec_1" value="0" min="-180" max="180" step="0.00000001"/></td>
+	<tr>
+	    <td colspan="4">
+	        This tool will calculate the distance between two points in
+		    Decimal degrees (DD, in DD.DDD&#176; format)
+	    </td>
         </tr>
-	<tr></tr>
         <tr> 
-            <td colspan="4">Location 2</td>
+	    <td colspan="2"></td>
+            <td colspan="1">Lattitude</td>
+	    <td colspan="1">Longitude</td>
 	</tr> 
         <tr>
-	    <td>Latitude (dec)</td>
-            <td><input type="number" name="lat_dec_2" id="lat_dec_2" value="0" min="-180" max="180" step="0.00000001"/></td>
-            <td>Longitude (dec)</td>
-            <td><input type="number" name="lon_dec_2" id="lon_dec_2" value="0" min="-180" max="180" step="0.00000001"/></td>
+	    <td colspan="2">Location 1:</td>
+            <td colspan="1"><input type="number" name="lat_dec_1" id="lat_dec_1" value="0" min="-180" max="180" step="0.00000001"/></td>
+            <td colspan="1"><input type="number" name="lon_dec_1" id="lon_dec_1" value="0" min="-180" max="180" step="0.00000001"/></td>
+        </tr>
+        <tr>
+	    <td colspan="2">Location 2:</td>
+            <td colspan="1"><input type="number" name="lat_dec_2" id="lat_dec_2" value="0" min="-180" max="180" step="0.00000001"/></td>
+            <td colspan="1"><input type="number" name="lon_dec_2" id="lon_dec_2" value="0" min="-180" max="180" step="0.00000001"/></td>
         </tr>
         <tr></tr>
 	<tr> 
-        	<td></td>
-        	<td colspan="2"><input type="button" value="Calculate" onclick="solve_distance()"/></td>
-		<td></td>
+            <td></td>
+            <td colspan="2"><input type="button" value="Calculate" onclick="solve_distance()"/></td>
+	    <td></td>
         </tr> 
         <tr></tr>
-	    
-	
         <tr>
 	    <td>Distance</td>
             <td colspan="2"><input type="number" name="distance" id="distance" value="0.00000000" min="0.00000000" step="0.00000001"/></td>
@@ -90,7 +90,7 @@
      		<option value="ft">ft</option>
             </select></td>
 	</tr> 
-	</table> 
+    </table> 
 </body> 
 
 </html>
