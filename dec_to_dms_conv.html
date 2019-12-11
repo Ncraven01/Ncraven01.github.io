@@ -14,7 +14,7 @@
         function calc_coord_dms(coord, pos_dir, neg_dir) {
             var coord_dec = document.getElementById(coord+"_dec").value;
 	    var coord_dir = pos_dir;
-	    if(coord_dec < 0){
+	    if(Math.sign(coord_dec) < 0){
 	        coord_dir = neg_dir;
 	    }
             var coord_deg = Math.floor(coord_dec).toString();
