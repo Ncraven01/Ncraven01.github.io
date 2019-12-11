@@ -7,21 +7,21 @@
 	<script type="text/javascript">
 
         function solve_dms() {
-            calc_coord_dms("lat");
-            calc_coord_dms_dir("lat", "N", "S")
-            calc_coord_dms("lon");
-            calc_coord_dms_dir("lon", "E", "W")
+            calc_coord_dms("lat", "N", "S");
+            calc_coord_dms("lon", "E", "W");
         }
         
-        function calc_coord_dms(coord) {
+        function calc_coord_dms(coord, pos_dir, neg_dir) {
             var coord_dec = document.getElementById(coord+"_dec").value;
+	    var coord_dir = pos_dir;
+	    if(coord_dec < 0){
+	        coord_dir = neg_dir
+	    }
             var coord_deg = Math.floor(coord_dec).toString();
             var coord_min_sec = eval('(' + coord_dec + '-' + coord_deg + ')*60');
             var coord_min = Math.floor(coord_min_sec).toString();
             var coord_sec = eval('(' + coord_min_sec + '-' + coord_min + ')*60');
-            document.getElementById(coord+"_deg").value = coord_deg;
-            document.getElementById(coord+"_min").value = coord_min;
-            document.getElementById(coord+"_sec").value = coord_sec.toFixed(3);
+            document.getElementById(coord+"_dms").innerHTML = coord_dir + ' ' + coord_deg + ' &#176; ' + coord_min + ' &#8242; ' + coord_sec.toFixed(3) + ' &#8243;';
         }
         
         function calc_coord_dms_dir(coord, dir_1, dir_2) {
@@ -79,25 +79,9 @@
 	    <td colspan="2">Longitude:</td>
 	</tr>
 	<tr>
-            <td colspan="2">
-		<select style="width:15%;" name="lat_dms_dir" id="lat_dms_dir">
-                    <option value="N">N</option>
-                    <option value="S">S</option>
-                </select>
-		<input type="number" style="width:20%;" name="lat_deg" id="lat_deg" value="0" min="0" step="1"/>&#176;</>
-		<input type="number" style="width:20%;" name="lat_min" id="lat_min" value="0" min="0" step="1"/>&#8242;</>
-		<input type="number" style="width:25%;" name="lat_sec" id="lat_sec" value="0.000" min="0" step="0.001"/>&#8243;</>
-	    </td>
-	    
-            <td align="center" colspan="2">
-		<select style="width:15%;" name="lon_dms_dir" id="lon_dms_dir">
-                    <option value="E">E</option>
-                    <option value="W">W</option>
-                </select>
-		<input type="number" style="width:20%;" name="lon_deg" id="lon_deg" value="0" min="0" step="1"/>&#176;</>
-		<input type="number" style="width:20%;" name="lon_min" id="lon_min" value="0" min="0" step="1"/>&#8242;</>
-	        <input type="number" style="width:25%;" name="lon_sec" id="lon_sec" value="0.000" min="0" step="0.001"/>&#8243;</>
-	    </td>
+	    <td colspan="2" name="lat_dms" id="lat_dms">N 00 &#176; 00 &#8242; 00.000 &#8243;</>
+            <td colspan="2" name="lon_dms" id="lon_dms">E 00 &#176; 00 &#8242; 00.000 &#8243;</>
+         
         </tr> 
 
 	</table> 
