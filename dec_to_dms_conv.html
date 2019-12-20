@@ -16,6 +16,7 @@
 	    var coord_dir = pos_dir;
 	    if(Math.sign(coord_dec) < 0){
 	        coord_dir = neg_dir;
+		coord_dec = Math.abs(coord_dec);
 	    }
             var coord_deg = Math.floor(coord_dec).toString();
             var coord_min_sec = eval('(' + coord_dec + '-' + coord_deg + ')*60');
@@ -79,7 +80,7 @@
 	    <td colspan="2">Longitude:</td>
 	</tr>
 	<tr>
-	    <td colspan="2" name="lat_dms" id="lat_dms">N 00 &#176; 00 &#8242; 00.001 &#8243;</>
+	    <td colspan="2" name="lat_dms" id="lat_dms">N 00 &#176; 00 &#8242; 00.002 &#8243;</>
             <td colspan="2" name="lon_dms" id="lon_dms">E 00 &#176; 00 &#8242; 00.000 &#8243;</>
          
         </tr> 
