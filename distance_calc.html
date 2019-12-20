@@ -26,13 +26,13 @@
             var dist_ele = document.getElementById("dist_unit")
 	    var dist_unit = dist_ele.options[dist_ele.selectedIndex].value
 	    if (dist_unit == "km") {
-	        document.getElementById("distance").value = dist_km.toString()
+	        document.getElementById("distance").innerHTML = dist_km.toString()
 	    } else if (dist_unit == "mi"){
-	    	document.getElementById("distance").value = (dist_km*0.621371).toString()
+	    	document.getElementById("distance").innerHTML = (dist_km*0.621371).toString()
 	    } else if (dist_unit == "m"){
-		document.getElementById("distance").value = (dist_km*1000).toString()
+		document.getElementById("distance").innerHTML = (dist_km*1000).toString()
 	    } else if (dist_unit == "ft"){
-		document.getElementById("distance").value = (dist_km*3280.838879).toString()
+		document.getElementById("distance").innerHTML = (dist_km*3280.838879).toString()
 	    }
 	
         }
@@ -82,7 +82,7 @@
         <tr>
 	    <td>Distance</td>
             <td colspan="2">
-	        <input type="number" style="width:70%;" name="distance" id="distance" value="0.000" min="0.000"/></td>
+	        <p style="width:70%;" name="distance" id="distance">0.000"</p>
                 <select style="width:30%;" name="dist_unit" id="dist_unit" onchange="solve_distance()">
                     <option value="km">km</option>
 		    <option value="mi">mi</option>
