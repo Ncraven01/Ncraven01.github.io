@@ -7,8 +7,7 @@
 	<script type="text/javascript">
 
         function solve_dms() {
-            var lat_dms = calc_coord_dms_new(document.getElementById("lat_dec").value, "N", "S");
-	    document.getElementById("lat_dms").innerHTML = lat_dms[dir] + ' ' + lat_dms[deg].toString() + ' &#176; ' + lat_dms[min].toString() + ' &#8242; ' + lat_dms[sec].toString().toFixed(3) + ' &#8243;';
+            calc_coord_dms("lat", "N", "S");
             calc_coord_dms("lon", "E", "W");
         }
         
@@ -25,26 +24,6 @@
             var coord_sec = eval('(' + coord_min_sec + '-' + coord_min + ')*60');
             document.getElementById(coord+"_dms").innerHTML = coord_dir + ' ' + coord_deg + ' &#176; ' + coord_min + ' &#8242; ' + coord_sec.toFixed(3) + ' &#8243;';
         }
-		
-	function calc_coord_dms_new(coord_dec, pos_dir, neg_dir) {
-	    var return_dict = {
-	    	dir : 'N',
-	    	deg : 0,
-	    	min : 0,
-	    	sec : 0
-	    };
-	    return_dict[dir] = pos_dir;
-	    if(Math.sign(coord_dec) < 0){
-	        return_dict[dir] = neg_dir;
-		coord_dec = Math.abs(coord_dec);
-	    }
-	    return_dict[deg] = Math.floor(coord_dec);
-            var coord_min_sec = (coord_dec-return_dict[deg])*60;
-            return_dict[min] = Math.floor(coord_min_sec);
-            return_dict[sec] = (coord_min_sec-return_dict[min])*60;
-	    
-	    return return_dict
-	}
         
         function calc_coord_dms_dir(coord, dir_1, dir_2) {
             var coord_dir = document.getElementById(coord+"_dec_dir").value.toUpperCase();
