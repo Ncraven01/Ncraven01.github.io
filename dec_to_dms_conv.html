@@ -29,9 +29,9 @@
 	function calc_coord_dms_new(coord_dec, pos_dir, neg_dir) {
 	    var return_dict = {
 	    	dir : 'N',
-	    	deg : 00,
-	    	min : 00,
-	    	sec : 00.000
+	    	deg : 0,
+	    	min : 0,
+	    	sec : 0
 	    };
 	    return_dict[dir] = pos_dir;
 	    if(Math.sign(coord_dec) < 0){
@@ -101,7 +101,7 @@
 	    <td colspan="2">Longitude:</td>
 	</tr>
 	<tr>
-	    <td colspan="2" name="lat_dms" id="lat_dms">N 00 &#176; 00 &#8242; 00.003 &#8243;</>
+	    <td colspan="2" name="lat_dms" id="lat_dms">N 00 &#176; 00 &#8242; 00.004 &#8243;</>
             <td colspan="2" name="lon_dms" id="lon_dms">E 00 &#176; 00 &#8242; 00.000 &#8243;</>
          
         </tr> 
