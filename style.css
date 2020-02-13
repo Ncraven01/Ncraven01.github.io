@@ -39,3 +39,7 @@ border-width:0px;
 text-align:center;
 vertical-align:center;
 }
+
+background {
+  background-image: linear-gradient(to right,grey 1px, transparent 1px); 
+}
